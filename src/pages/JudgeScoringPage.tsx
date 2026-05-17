@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import {
   Box, Typography, Card, CardContent, Slider, TextField,
   Button, Alert, LinearProgress, Chip, Paper,
   CircularProgress, Divider, Tooltip, Avatar,
-  Stepper, Step, StepLabel, StepButton,
+  Stepper, Step, StepButton,
 } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import { scoringApi } from '../api';
