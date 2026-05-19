@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const client = axios.create({
-  baseURL: 'https://scoring-backend-6p9h.vercel.app/api',
+  baseURL: 'https://scoring-backend.vercel.app/api',
   headers: { 'Content-Type': 'application/json' },
 });
 
