@@ -15,6 +15,7 @@ import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import ShareIcon from '@mui/icons-material/Share';
 import LeaderboardIcon from '@mui/icons-material/Leaderboard';
 import CategoryIcon from '@mui/icons-material/Category';
+import RefreshIcon from '@mui/icons-material/Refresh';
 
 const rankMedal = (rank: number) => {
   if (rank === 1) return '🥇';
@@ -249,10 +250,36 @@ export default function ResultsPage() {
           <Typography variant="h4" fontWeight={800}>Results — {data.event.name}</Typography>
           <Chip label={data.event.status} size="small" sx={{ textTransform: 'capitalize', mt: 0.5 }} />
         </Box>
-        <Button variant="outlined" startIcon={<ShareIcon />} onClick={copyLeaderboardLink}>Share Leaderboard</Button>
-        <Button variant="contained" onClick={() => { setLoading(true); resultsApi.getResults(id!).then((res) => setData(res.data)).finally(() => setLoading(false)); }}>
-          Refresh
-        </Button>
+        <Button variant="outlined" startIcon={<ShareIcon />} onClick={copyLeaderboardLink}></Button>
+        <IconButton
+          color="primary"
+          disabled={loading}
+          onClick={() => {
+            setLoading(true);
+            resultsApi.getResults(id!)
+              .then((res) => setData(res.data))
+              .finally(() => setLoading(false));
+          }}
+          sx={{
+            backgroundColor: '#F1F5F9', // Soft background fill
+            color: '#1D4ED8',           // Matches your ScoreFlow theme blue
+            transition: 'all 0.2s ease',
+            '&:hover': {
+              backgroundColor: '#E2E8F0',
+              transform: 'scale(1.05)',
+            },
+            // Elegant spin matrix animation when loading is true
+            '& .MuiSvgIcon-root': {
+              animation: loading ? 'spin 1s linear infinite' : 'none'
+            },
+            '@keyframes spin': {
+              '0%': { transform: 'rotate(0deg)' },
+              '100%': { transform: 'rotate(360deg)' }
+            }
+          }}
+        >
+          <RefreshIcon fontSize="small" />
+        </IconButton>
       </Box>
 
       {data.results.length === 0 ? (
