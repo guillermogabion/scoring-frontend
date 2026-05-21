@@ -103,7 +103,12 @@ function PortionRankingTable({
                   <Box display="flex" flexDirection="column" gap={0.5}>
                     {pb?.criteriaBreakdown?.map((cb) => (
                       <Box key={cb.criteriaId} display="flex" gap={1} alignItems="center" flexWrap="wrap">
-                        <Typography variant="caption" color="text.secondary" sx={{ minWidth: { xs: 70, sm: 100 }, fontSize: '0.75rem', noWrap: true }}>
+                        <Typography
+                          variant="caption"
+                          color="text.secondary"
+                          noWrap
+                          sx={{ minWidth: { xs: 70, sm: 100 }, fontSize: '0.75rem' }}
+                        >
                           {cb.criteriaName}
                         </Typography>
                         <LinearProgress
